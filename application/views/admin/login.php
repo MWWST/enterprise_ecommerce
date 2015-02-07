@@ -10,7 +10,7 @@
 	<div class="containter">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <h2>Admin Login</h2>
+        <h2>Administrator Login</h2>
       		<form action ="/admin/authenticate/" method="post">
             <div class="form-group">
               <label for="email">Email address</label>
