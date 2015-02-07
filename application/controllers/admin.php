@@ -4,7 +4,7 @@ class Admin extends CI_Controller {
 
 
 	public function loginpage(){
-		$this->load->view('admin/header');
+		// $this->load->view('admin/header');
 		$this->load->view('admin/login');
 	}
 
@@ -12,6 +12,7 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/header');
 		var_dump($this->input->post());
 	}
+
 
 }
 
