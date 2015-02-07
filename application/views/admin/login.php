@@ -1,4 +1,4 @@
-<?php ?>
+<?php echo 'paul' ?>
 
 <html>
 <head>
