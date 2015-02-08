@@ -101,6 +101,8 @@
 			background-color: gray;
 			margin: 5px;
 			display: inline-block;
+			position: relative;
+		
 		}
 
 		.bott-nav {
@@ -121,6 +123,24 @@
 			text-align: left;
 			padding-left: 0px;
 			margin-left: 5px
+		}
+
+		.overlay {
+	
+			text-align: right;
+			vertical-align: bottom;
+			background-color: lightblue;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+
+
+
+		}
+		.overlay h5 {
+			margin: 0px;
+
+
 		}
 
 
@@ -177,84 +197,126 @@
 						<div class='row'>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
-							</div>	
+								<a href=''><p text-center>Black Belt</p></a>
+							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
-							</div>			
-						</div>
+								<a href=''><p text-center>Black Belt</p></a>
+							</div>
 						<div class='row'>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
-							</div>	
+								<a href=''><p text-center>Black Belt</p></a>
+							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
-							</div>			
-						</div>
+								<a href=''><p text-center>Black Belt</p></a>
+							</div>
 						<div class='row'>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
+								<a href=''><p text-center>Black Belt</p></a>
 							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
-							</div>	
+								<a href=''><p text-center>Black Belt</p></a>
+							</div>
 							<div class='product-box'>
 								<div class='image'>
+										<div class='overlay'>
+										<h5>$19.00</h5>
+									</div>
 								</div>
-								<p text-center>Black Belt</p>
-							</div>			
-						</div>
+								<a href=''><p text-center>Black Belt</p></a>
+							</div>
 						<div class='row text-center'>
 							<ul class='bott-nav'>
 								<li><a href=''>1</a></li>

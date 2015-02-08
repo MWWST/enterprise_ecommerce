@@ -74,16 +74,16 @@
 					</div>
 				</div>
 				<div class='small-imgs'>
-					<div class = 'sm-square'>
-					</div>
-					<div class = 'sm-square'>
-					</div>
-					<div class = 'sm-square'>
-					</div>
-					<div class = 'sm-square'>
-					</div>
-					<div class = 'sm-square'>
-					</div>
+					<a href='' class = 'sm-square'>
+					</a>
+					<a href='' class = 'sm-square'>
+					</a>
+					<a href='' class = 'sm-square'>
+					</a>
+					<a href='' class = 'sm-square'>
+					</a>
+					<a href='' class = 'sm-square'>
+					</a>
 				</div>
 			</div>
 			<div class='col-sm-8 borders'>
@@ -126,35 +126,36 @@
 			<div class='col-sm-12 borders'>
 				<h3>Similar Items</h3>
 				<div class='similar-items'>
+					
 					<div class='sim-items'>
-						<div class='bott-img'>
-						</div>
-						<p>Black Belt</p>
+						<a href='' class='bott-img'>
+						</a>
+						<p><a href=''>Black Belt</a></p>
 					</div>
 					<div class='sim-items'>
-						<div class='bott-img'>
-						</div>
-						<p>Black Belt</p>
+						<a href='' class='bott-img'>
+						</a>
+						<p><a href=''>Black Belt</a></p>
 					</div>
 					<div class='sim-items'>
-						<div class='bott-img'>
-						</div>
-						<p>Black Belt</p>
+						<a href='' class='bott-img'>
+						</a>
+						<p><a href=''>Black Belt</a></p>
 					</div>
 					<div class='sim-items'>
-						<div class='bott-img'>
-						</div>
-						<p>Black Belt</p>
+						<a href='' class='bott-img'>
+						</a>
+						<p><a href=''>Black Belt</a></p>
 					</div>
 					<div class='sim-items'>
-						<div class='bott-img'>
-						</div>
-						<p>Black Belt</p>
+						<a href='' class='bott-img'>
+						</a>
+						<p><a href=''>Black Belt</a></p>
 					</div>					
 					<div class='sim-items'>
-						<div class='bott-img'>
-						</div>
-						<p>Black Belt</p>
+						<a href='' class='bott-img'>
+						</a>
+						<p><a href=''>Black Belt</a></p>
 					</div>
 				</div>
 			</div>
