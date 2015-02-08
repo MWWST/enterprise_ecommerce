@@ -24,7 +24,7 @@ class Dashboard extends CI_Controller {
 				$this->load->view('admin/header');
 				$this->load->model('product');
 				$all_products=$this->product->retrieve();
-				$product['id'] = array('id'=>'id','name'=>'name','description'=>'description','price'=>'price','quant_sold'=>'quant_sold','inventory_count'=>'inventory_count','image_link'=>'image_link');
+				
 				$this->load->view('admin/products',array('product'=>$all_products));
 				// var_dump($all_products);
 				
