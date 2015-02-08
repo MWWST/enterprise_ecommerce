@@ -16,8 +16,13 @@ class Dashboard extends CI_Controller {
 		}
 
 			public function products(){
-			$this->load->view('admin/header');
-			$this->load->view('admin/products');
+				function __construct()
+				{
+					parent::__construct();
+					$this->load->helper(array('form', 'url'));
+				}
+				$this->load->view('admin/header');
+				$this->load->view('admin/products');
 
 		}
 

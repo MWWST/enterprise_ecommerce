@@ -1,9 +1,15 @@
 
 		<div class="col-sm-4">
-		<input type="search" class="form-control" placeholder="search">
+		 <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Search for...">
+    </div><!-- /input-group -->
 		</div>
 		<div class="col-sm-4 col-sm-offset-4 text-right">
-					<button class="btn btn-primary">Add New Product</button>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New Product</button>
+
 		<!-- 	<div class="dropdown">
 			  <select class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 			    Filter by status
@@ -69,14 +75,65 @@
 				  <ul class="pagination">
 				    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 				    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">2 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">4 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">5 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>
+				    <li class="disabled"><a href="#">2 </a></li>
+				    <li class="disabled"><a href="#">3 </a></li>
+				    <li class="disabled"><a href="#">4 </a></li>
+				    <li class="disabled"><a href="#">5 </a></li>
+				    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 				  </ul>
 				</nav>
 			</div>
-		 </div>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Add New Product</h4>
+				      </div>
+				      <div class="modal-body">
+				       <form action="/upload/do_upload" method="post" enctype="multipart/form-data">
+						  <div class="form-group">
+						    <label for="product_name">Name</label>
+						    <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name">
+						  </div>
+						  <div class="form-group">
+						    <label for="Description">Description</label>
+						    <textarea class="form-control" name="product_description" id="product_description"> </textarea>
+						  </div>
+						   <div class="form-group">
+						    <label for="category">Category</label>
+						    <select class="form-control">
+						    <option>Shirts</option>
+						    <option>Hats</option>
+						    <option>Mugs</option>
+						    </select>
+						  </div>
+						  <div class="form-group">
+						    <label for="product_name">or add new cateogry</label>
+						    <input type="text" class="form-control" id="add_category" name="add_category" placeholder="Enter category name">
+						  </div>
+
+						  <div class="form-group">
+						    <label for="exampleInputFile">File input</label>
+						    <input type="file" name="userfile">
+						    <p class="help-block">Fancy image features with ajax here</p>
+						  </div>	
+						
+				      </div>
+				      <div class="modal-footer">
+				          <button class="btn btn-danger">Cancel</button> 
+						  <button class="btn btn-primary">Preview</button>
+						  <button type="submit" class="btn btn-success">Create</button>
+						  <input type="hidden" name="add_product" value="new_product"</input>
+				        </form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+
 </body>
 </html>

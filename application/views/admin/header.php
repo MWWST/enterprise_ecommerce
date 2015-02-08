@@ -54,7 +54,7 @@
 	}
 
 	.orderfilter {
-		margin-left:230px;
+		margin-left:15%
 	}
 	</style>
 </head>

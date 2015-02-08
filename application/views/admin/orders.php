@@ -3,12 +3,15 @@
 		<input type="search" class="form-control" placeholder="search">
 		</div>
 		<div class="col-sm-4 col-sm-offset-6">
-					<select class="orderfilter">
-							<option>Show All</option>
-			 				<option>Shipped</option>
-			 				<option>Order in Progress</option>
-			 				<option>Cancelled</option>
+					<form>
+					<select class="form-control">
+							<option value="1"><a href="">Show All</a></option>
+			 				<option value="2">Shipped</option>
+			 				<option value="3">Order in Progress</option>
+			 				<option value="4">Cancelled</option>
 		 			</select>
+		 			<input type="hidden" name="filer" value="status-filter">
+	 			</form>
 		<!-- 	<div class="dropdown">
 			  <select class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 			    Filter by status
@@ -105,16 +108,24 @@
 		 <div class="row">
 			<div class="col-sm-12 col-sm-offset-4">
 			 	<nav>
-				  <ul class="pagination">
-				    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-				    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">2 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">3 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">4 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#">5 <span class="sr-only">(current)</span></a></li>
-				    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>
-				  </ul>
-				</nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 			</div>
 		 </div>
 </body>
