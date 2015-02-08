@@ -24,7 +24,7 @@
 		}
 
 		.main-products {
-			border: solid green 1px;
+			border: solid gray 2px;
 			width: 100%;
 			text-align: center;
 			
