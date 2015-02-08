@@ -24,6 +24,7 @@
 			</div> -->
 		</div>
 		 <div class="col-sm-12 col-md-12 col-md-offset-0">
+		 	 		
 		 	<table class="table table-striped">
 		 		<thead>
 		 			<th>Picture</th>
@@ -33,14 +34,25 @@
 		 			<th>Quantity Sold</th>
 		 			<th>Action</th>
 		 		</thead>
-		 		<tr>
-		 			<td><img src=""></td>
-		 			<td>1</td>
-		 			<td>T-Shirt</td>
-		 			<td>123</td>
-		 			<td>1000</td>
-		 			<td><a href="/edit/id">Edit</a> | <a href="/delete/id">Delete</a></td>
-	 			</tr>
+		 		<?php  foreach ($product as $key => $value) { ?>
+					<?="<tr>";
+					if($value['image_link'])
+						{echo "<td><img src='".$value['image_link']."'width='150px'></td>";
+						}
+					else 
+						{echo "<td><img src='/uploads/default_product.png' width='150px'></td>";
+						}
+		 			echo "<td>".$value['id']."</td>";
+		 			echo"<td>".$value['name']."</td>";
+		 			echo"<td>".$value['inventory_count']."</td>";
+		 			echo"<td>".$value['quant_sold']."</td>";
+		 			echo"<td><a href='/edit/id'>Edit</a> | <a href='/delete/id'>Delete</a></td>
+	 			</tr>";
+
+} ?>
+
+		
+		 		<!-- 
 	 			<tr>
 		 			<td><img src=""></td>
 		 			<td>2</td>
@@ -64,7 +76,7 @@
 		 			<td>74</td>
 		 			<td>16</td>
 		 			<td><a href="/edit/id">Edit</a> | <a href="/delete/id">Delete</a></td>
-	 			</tr>
+	 			</tr> -->
 
 			</table>
 		 </div>
@@ -112,6 +124,14 @@
 						  <div class="form-group">
 						    <label for="product_name">or add new cateogry</label>
 						    <input type="text" class="form-control" id="add_category" name="add_category" placeholder="Enter category name">
+						  </div>
+						   <div class="form-group">
+						    <label for="product_price">Product Price</label>
+						    <input type="text" class="form-control" id="product_price" name="product_price" placeholder="Enter price">
+						  </div>
+						  <div class="form-group">
+						    <label for="inventory_quantity">Inventory Quantity</label>
+						    <input type="text" class="form-control" id="inventory_quantity" name="inventory_quantity" placeholder="Enter category name">
 						  </div>
 
 						  <div class="form-group">

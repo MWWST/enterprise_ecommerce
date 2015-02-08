@@ -15,6 +15,7 @@ class Upload extends CI_Controller {
 
 	function do_upload()
 	{
+		$this->output->enable_profiler();
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '100';
@@ -22,6 +23,7 @@ class Upload extends CI_Controller {
 		$config['max_height']  = '768';
 
 		$this->load->library('upload', $config);
+		$this->upload_config['upload_path'] = realpath(dirname(__FILE__)). '/uploads/';
 
 		if ( ! $this->upload->do_upload())
 		{
@@ -32,11 +34,11 @@ class Upload extends CI_Controller {
 		else
 		{
 			$data = array('upload_data' => $this->upload->data());
-
-			// $this->load->view('/upload_success', $data);
-			var_dump($data);
-			var_dump($this->input->post());
-		}
+			$this->load->Model('product');
+			$added=$this->product->create($this->input->post(),$data);
+			redirect('/dashboard/products');
+			// var_dump($data);
 	}
+}
 }
 ?>

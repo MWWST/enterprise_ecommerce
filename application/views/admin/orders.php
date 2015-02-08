@@ -10,7 +10,7 @@
 			 				<option value="3">Order in Progress</option>
 			 				<option value="4">Cancelled</option>
 		 			</select>
-		 			<input type="hidden" name="filer" value="status-filter">
+		 			<input type="hidden" name="filter" value="status-filter">
 	 			</form>
 		<!-- 	<div class="dropdown">
 			  <select class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">

@@ -346,7 +346,7 @@ class CI_Upload {
 						'file_name'			=> $this->file_name,
 						'file_type'			=> $this->file_type,
 						'file_path'			=> $this->upload_path,
-						'full_path'			=> $this->upload_path.$this->file_name,
+						'full_path'			=> substr_replace($this->upload_path.$this->file_name, "/", 0, 64),
 						'raw_name'			=> str_replace($this->file_ext, '', $this->file_name),
 						'orig_name'			=> $this->orig_name,
 						'client_name'		=> $this->client_name,
