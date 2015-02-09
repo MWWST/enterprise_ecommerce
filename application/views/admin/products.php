@@ -35,6 +35,8 @@
 		 			<th>Action</th>
 		 		</thead>
 		 		<?php  
+
+		 			
 		 			// krsort($all_products);
 		 			// var_dump($all_products);
 		 			foreach ($all_products as $key => $value) 
@@ -121,9 +123,11 @@
 						   <div class="form-group">
 						    <label for="category">Category</label>
 						    <select class="form-control">
-						    <option>Shirts</option>
-						    <option>Hats</option>
-						    <option>Mugs</option>
+						    	<?php foreach ($categories as $key1 => $category_info) {
+		 			 			
+					    echo "<option value='".$category_info['id']."'>".$category_info['category']."</option>"; } ?>
+		
+						  <!--   We will add the category id's and titles from db shortly. -->
 						    </select>
 						  </div>
 						  <div class="form-group">

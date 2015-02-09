@@ -20,7 +20,8 @@
 		{
 			$error = array('error' => $this->upload->display_errors());
 			var_dump($error);
-			var_dump($this->upload->data());
+			// var_dump($this->upload->data());
+			var_dump($this->input->post());
 			// $this->load->view('/admin/upload_form/', $error);
 		}
 		else

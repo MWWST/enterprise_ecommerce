@@ -36,8 +36,9 @@ class Upload extends CI_Controller {
 			$data = array('upload_data' => $this->upload->data());
 			$this->load->Model('product');
 			$added=$this->product->create($this->input->post(),$data);
-			redirect('/dashboard/products');
-			// var_dump($data);
+			// redirect('/dashboard/products');
+			// echo $this->db->insert_id();
+			var_dump($this->input->post());
 	}
 }
 }
