@@ -237,7 +237,7 @@ CREATE TABLE `products` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +246,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'T-Shirt','The most amazing t-shirt you will ever wear',1000.00,1,999,'/uploads/smallpistol.jpg','2012-02-07 00:00:00',NULL),(22,'Crossfit workout shirt',' ',29.95,NULL,47,'/uploads/small_muscle_ups5.jpg','2015-02-07 23:12:56',NULL);
+INSERT INTO `products` VALUES (1,'T-Shirt','The most amazing t-shirt you will ever wear',1000.00,1,999,'/uploads/smallpistol.jpg','2012-02-07 00:00:00',NULL),(22,'Crossfit workout shirt',' ',29.95,NULL,47,'/uploads/small_muscle_ups5.jpg','2015-02-07 23:12:56',NULL),(23,'The Ohio Bar','Amazing OLY lifting bar ',299.99,NULL,999,'/uploads/ohio-bar-th_3.jpg','2015-02-08 22:37:32',NULL),(24,'28 mm oly bar','Training bar for the beginner ',199.99,NULL,93,'/uploads/28mm-olympic-training-bar-web-th1.jpg','2015-02-08 22:38:07',NULL),(25,'Rogue 45#  Hundo Competition Bumper Weight','Awesome sauce for oly meets',99.95,NULL,22,'/uploads/hundo-comp-th.jpg','2015-02-08 22:38:59',NULL),(26,'BA Squat Rack','Get your squat on ',499.95,NULL,22,'/uploads/sml-2-th.jpg','2015-02-08 22:39:37',NULL),(27,'Medball Central','Get this awesome medball kit with 20# and 14# pro medbals and mountable shelf ',1799.99,NULL,99,'/uploads/strip-medball-shelf-th.jpg','2015-02-08 22:40:23',NULL),(28,'Ultimate Gym Bag','With errrrything you need for dem gainz ',349.99,NULL,77,'/uploads/rogue-gym-bags-h1_1_1.jpg','2015-02-08 22:41:22',NULL),(29,'Rogue Wood Rings',' ',189.99,NULL,129,'/uploads/wood-rings_1_1_1.jpg','2015-02-09 00:05:26',NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,11 +364,12 @@ CREATE TABLE `users` (
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `access_level` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,6 +378,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Michael','Wetizman','mw@worldsourcetech.com','9c79093f4bb9e112a9907373ece43421',1,NULL,NULL),(2,'James','Leapord','j@gmail.com','5d41402abc4b2a76b9719d911017c592',2,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -501,4 +503,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-08 14:40:54
+-- Dump completed on 2015-02-09  0:24:42
