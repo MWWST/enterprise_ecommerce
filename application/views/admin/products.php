@@ -122,7 +122,7 @@
 						  </div>
 						   <div class="form-group">
 						    <label for="category">Category</label>
-						    <select class="form-control">
+						    <select class="form-control" name="category"><option>Please Select</option>
 						    	<?php foreach ($categories as $key1 => $category_info) {
 		 			 			
 					    echo "<option value='".$category_info['id']."'>".$category_info['category']."</option>"; } ?>

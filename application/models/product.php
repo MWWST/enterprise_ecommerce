@@ -1,22 +1,43 @@
 <?php class Product extends CI_Model {
 	
-
 	public function create($post,$data){
-		if ($post['add_category']){
+		
+		if (strlen($post['add_category'])>1){
 		$this->db->query("INSERT INTO categories (category,created_at) VALUES (? , NOW())",array($post['add_category']));
 		$cat_last_insert=$this->db->insert_id();
-		}
-
+		
 		$this->db->query("INSERT INTO products (name, description, price, inventory_count, image_link, created_at) 
-	 VALUES (?, ?, ?, ?, ?, NOW())", array($post['product_name'],$post['product_description'],
+	 	VALUES (?, ?, ?, ?, ?, NOW())", array($post['product_name'],$post['product_description'],
+	 	$post['product_price'], $post['inventory_quantity'],$data['upload_data']['full_path']));
+		$last_insert=$this->db->insert_id();	
+
+
+		$this->db->query("INSERT INTO categories_have_products (products_id,categories_id,created_at) VALUES (?,? ,NOW())",
+		array($last_insert,$cat_last_insert));  
+	}
+
+	elseif ($post['category']) {
+		$this->db->query("INSERT INTO products (name, description, price, inventory_count, image_link, created_at) 
+	 	VALUES (?, ?, ?, ?, ?, NOW())", array($post['product_name'],$post['product_description'],
 	 	$post['product_price'], $post['inventory_quantity'],$data['upload_data']['full_path']));
 		$last_insert=$this->db->insert_id();
 
 		$this->db->query("INSERT INTO categories_have_products (products_id,categories_id,created_at) VALUES (?,? ,NOW())",
-		array($last_insert,$cat_last_insert));  
+		array($last_insert,$post['category']));
+	}
+
+	else {
+
+		$this->db->query("INSERT INTO products (name, description, price, inventory_count, image_link, created_at) 
+	 	VALUES (?, ?, ?, ?, ?, NOW())", array($post['product_name'],$post['product_description'],
+	 	$post['product_price'], $post['inventory_quantity'],$data['upload_data']['full_path']));
+		$last_insert=$this->db->insert_id();
 
 
 	}
+
+
+}
 
 	public function retrieve(){
 

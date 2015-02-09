@@ -15,31 +15,41 @@ class Upload extends CI_Controller {
 
 	function do_upload()
 	{
-		$this->output->enable_profiler();
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
 
-		$this->load->library('upload', $config);
-		$this->upload_config['upload_path'] = realpath(dirname(__FILE__)). '/uploads/';
+			$this->output->enable_profiler();
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('add_category','add_category','is_unique[categories.category]');
+			if ($this->form_validation->run() == FALSE)
+			{
+				echo validation_errors();
+			}
 
-		if ( ! $this->upload->do_upload())
-		{
-			$error = array('error' => $this->upload->display_errors());
-			var_dump($error);
-			// $this->load->view('/admin/upload_form/', $error);
+			else {
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '100';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+
+			$this->load->library('upload', $config);
+			$this->upload_config['upload_path'] = realpath(dirname(__FILE__)). '/uploads/';
+
+			if ( ! $this->upload->do_upload())
+			{
+				$error = array('error' => $this->upload->display_errors());
+				var_dump($error);
+				// $this->load->view('/admin/upload_form/', $error);
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$this->load->Model('product');
+				$added=$this->product->create($this->input->post(),$data);
+				// redirect('/dashboard/products');
+				// echo $this->db->insert_id();
+				var_dump($this->input->post());
+			}
 		}
-		else
-		{
-			$data = array('upload_data' => $this->upload->data());
-			$this->load->Model('product');
-			$added=$this->product->create($this->input->post(),$data);
-			// redirect('/dashboard/products');
-			// echo $this->db->insert_id();
-			var_dump($this->input->post());
 	}
-}
 }
 ?>
