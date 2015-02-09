@@ -77,7 +77,7 @@
 		        <li class="link"><a class="link" href="#">Products</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
-		            <li class="link"><a href="#">Logoff</a></li>
+		            <li class="link"><a href="/admin/logoff/">Logoff</a></li>
 		          </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->

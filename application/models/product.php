@@ -9,7 +9,13 @@
 
 	public function retrieve(){
 
-		return $this->db->query("SELECT * FROM products ORDER BY id ASC")->result_array();
+		return $this->db->query("SELECT * FROM products ORDER BY id DESC")->result_array();
+	}
+
+
+	public function get_products($start_row,$limit){
+
+		return $this->db->query("SELECT * FROM products ORDER BY id DESC limit $start_row, $limit")->result_array();
 	}
 }
 ?>
