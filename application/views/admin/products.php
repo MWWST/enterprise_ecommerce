@@ -48,12 +48,12 @@
 					else 
 						{echo "<td><img src='/uploads/default_product.png' width='150px'></td>";
 						}
-		 			echo "<td>".$value['id']."</td>";
-		 			echo"<td>".$value['name']."</td>";
+		 			echo "<td id='id'>".$value['id']."</td>";
+		 			echo"<td class='product_names' id='prod_name'>".$value['name']."</td>";
 		 			echo"<td>".$value['inventory_count']."</td>";
 		 			echo"<td>".$value['quant_sold']."</td>";
-		 			echo"<td><a href='/edit/id'>Edit</a> | <a href='/delete/id'>Delete</a></td>
-	 			</tr>";
+		 			echo"<td><button id ='edit'class='btn btn-primary btn-sm edit' data-toggle='modal' data-target='#myModal' data-id='".$value['name']."'>Edit</button> | <a href='/delete/id'>Delete</a></td>
+	 			</tr>";  	
 
 } ?>
 
@@ -163,7 +163,12 @@
 		 	</div>
 	 	</div>
  	</div>
- 	
+<script>
+$('.edit').click(function () {
+    var data = $(this).data('id');
+    console.log(data);
+});
+</script>
 
 </body>
 </html>
