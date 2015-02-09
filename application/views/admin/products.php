@@ -34,7 +34,11 @@
 		 			<th>Quantity Sold</th>
 		 			<th>Action</th>
 		 		</thead>
-		 		<?php  foreach ($product as $key => $value) { ?>
+		 		<?php  
+		 			// krsort($all_products);
+		 			// var_dump($all_products);
+		 			foreach ($all_products as $key => $value) 
+		 					{ ?>
 					<?="<tr>";
 					if($value['image_link'])
 						{echo "<td><img src='".$value['image_link']."'width='150px'></td>";
@@ -83,6 +87,7 @@
 		
 		 <div class="row">
 			<div class="col-sm-12 col-sm-offset-4">
+				<?php echo $pagination;?>
 			 	<nav>
 				  <ul class="pagination">
 				    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -154,6 +159,7 @@
 		 	</div>
 	 	</div>
  	</div>
+ 	
 
 </body>
 </html>
