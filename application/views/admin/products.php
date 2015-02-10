@@ -8,7 +8,7 @@
     </div><!-- /input-group -->
 		</div>
 		<div class="col-sm-4 col-sm-offset-4 text-right">
-			<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New Product</button>
+			<button class="btn btn-success" data-toggle="modal" data-target="#myModal">Add New Product</button>
 
 		<!-- 	<div class="dropdown">
 			  <select class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -57,7 +57,7 @@
 		 			echo"<td><button id ='edit'class='btn btn-primary btn-sm edit' data-toggle='modal' data-target='#myModal' 
 		 			data-desc='".$value['description']."'data-productid='".$value['product_id']."'
 		 			data-prodname='".$value['name']."' data-cat='".$value['categories_id']."'
-		 			data-price='".$value['price']."' data-inv='".$value['inventory_count']."'>Edit</button> | <a href='/delete/id'>Delete</a></td>
+		 			data-price='".$value['price']."' data-inv='".$value['inventory_count']."'>Edit</button>  <button id ='delete' class='btn btn-danger btn-sm deleteme' data-toggle='modal' data-target='#deleteModal' data-productid='".$value['product_id']."'>Delete</button></td>
 	 			</tr>";  	
 
 } ?>
@@ -107,7 +107,7 @@
 				  </ul>
 				</nav>
 			</div>
-				<!-- Modal -->
+				<!-- Add and Edit Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-dialog">
 				    <div class="modal-content">
@@ -168,6 +168,25 @@
 		 	</div>
 	 	</div>
  	</div>
+
+ 	<!-- DELETE Modal -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+	      </div>
+	      <div class="modal-body">
+	        Are you sure you want to delete this product?
+	      </div>
+	      <div class="modal-footer">
+	      	<!-- <form id="delete_product" action="/product/delete"> -->
+	       <a id="delete_link" href=""> <button type="submit" class="btn btn-danger">Delete Product</button></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 <script>
 $('.edit').click(function () {
     var productid = $(this).data('productid');
@@ -186,7 +205,6 @@ $('.edit').click(function () {
     $('#modal_form').attr('action','/upload/edit_product');
     $('#productaction').val("edit_product");
     $('#modal_productid').val($(this).data('productid'));
-    
 
     console.log(productid);
     console.log(name);
@@ -196,6 +214,14 @@ $('.edit').click(function () {
     console.log(category);
 
 });
+    
+$('.deleteme').click(function(){
+	var deleteid = "/products/delete/" + $(this).data('productid');
+	// console.log(deleteid);
+	$('#delete_link').attr('href',deleteid);
+
+});
+    
 </script>
 
 </body>

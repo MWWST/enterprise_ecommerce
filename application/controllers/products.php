@@ -33,4 +33,12 @@
 			var_dump($this->input->post());
 		}
 	}
+
+	function delete($id) {
+		$this->load->Model('product');
+		$this->product->delete_product($id);
+		redirect('/dashboard/products');
+
+	}
+
 }
