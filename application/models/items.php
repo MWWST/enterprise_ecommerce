@@ -7,7 +7,6 @@
 	}
 	
 
-
 	//gets all products
 	public function get_all() {
 		return $this->db->query("SELECT * FROM products")->result_array();

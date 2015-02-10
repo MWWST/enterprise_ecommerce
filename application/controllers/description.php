@@ -19,7 +19,7 @@ class Description extends CI_Controller {
 
 	}
 
-		//view of specific item
+	//view of specific item
 	public function index($id) {
 
 		//get the product info based on id
@@ -35,7 +35,6 @@ class Description extends CI_Controller {
 					$this->quant(2,$item['price']),
 					$this->quant(3,$item['price']),
 					);
-
 
 
 		$item['qty'] = $qty;
@@ -64,10 +63,10 @@ class Description extends CI_Controller {
 		$count = $this->session->userdata('cart');
 		$this->session->set_userdata('cart',$count + $quant );
 
-		$this->load->view("product_pages/description");
+		//session for the product and the quanity
+		
 
-
-
+		$this->index($id);
 
 	}
 }
