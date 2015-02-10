@@ -19,6 +19,7 @@
 	.main-img {
 		text-align: center;
 		width: 330px;
+		max-height: 250px;
 	}
 
 	.box-img {
@@ -52,10 +53,30 @@
 		margin: 8px;
 		display: inline-block;
 	}
-
-
-
 	</style>
+
+
+	<script type="text/javascript">
+	//when image is hoovered change .img-main src to the one that is being hoovered over
+
+	$(document).ready(function() {
+		$('.sm-square').hover(function() {
+			var hoverImg = $(this).attr('src');
+
+			console.log($(this).attr('src'));
+			$('.main-img').attr('src',hoverImg);
+
+		},function() {
+			console.log($('.main-img').attr('data-alt-src'));
+			var alt = $('.main-img').attr('data-alt-src');
+			$('.main-img').attr('src', alt);
+		});
+	})
+
+
+
+
+	</script>
 <body>
 <?php var_dump($product) ?>
 	<div class='container'>
@@ -71,11 +92,19 @@
 		</div>
 		<div class='row'>
 			<div class='col-sm-4 borders'>
-				<div class = 'main-img'>
-					<img class='main-img' src=<?= "{$product['img_arr'][0]}";  ?> alt="image">
+				<div>
+					<img class='main-img' data-alt-src=<?= "{$product['img_arr'][0]}";?> src=<?= "{$product['img_arr'][0]}";  ?> alt="image">
 				</div>
 				<div class='small-imgs'>
-					<a href='' class = 'sm-square'>
+<?php
+					 for($i=1;$i<count($product['img_arr']); $i++)
+					 {
+?>
+					<img class='sm-square' src= "<?=$product['img_arr'][$i];  ?>" alt='image' >
+<?php
+					 }  
+?>
+<!-- 					<a href='' class = 'sm-square'>
 					</a>
 					<a href='' class = 'sm-square'>
 					</a>
@@ -84,7 +113,7 @@
 					<a href='' class = 'sm-square'>
 					</a>
 					<a href='' class = 'sm-square'>
-					</a>
+					</a> -->
 				</div>
 			</div>
 			<div class='col-sm-8 borders'>

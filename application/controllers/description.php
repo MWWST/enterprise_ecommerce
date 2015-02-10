@@ -85,19 +85,40 @@ class Description extends CI_Controller {
 	public function sortedby() {
 		// echo 'hello';
 		// var_dump($this->input->post());
+
+
+
 		if ($this->input->post('option') == 'price')
 		{
 			// echo 'sort by price';
 			$list = $this->items->price();
-			$price = array('products' =>$list);
-			$this->load->view('product_pages/products', $price);
+
+			foreach ($list as &$index) {
+
+				//creates an array split on ,
+				$img_arr = $this->image_split($index['image_link']);
+				$index['img_arr'] = $img_arr;
+			}
+
+			$products = array('products' => $list);
+			// $price = array('products' =>$list);
+			$this->load->view('product_pages/products', $products);
 
 		}
 		else
 		{
 			$list = $this->items->popular();
-			$popular = array('products' =>$list);
-			$this->load->view('product_pages/products', $popular);
+
+			foreach ($list as &$index) {
+
+				//creates an array split on ,
+				$img_arr = $this->image_split($index['image_link']);
+				$index['img_arr'] = $img_arr;
+			}
+
+			$products = array('products' => $list);
+			// $popular = array('products' =>$list);
+			$this->load->view('product_pages/products', $products);
 
 		}
 		// echo 'hello get_products function';
