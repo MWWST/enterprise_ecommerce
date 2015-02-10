@@ -6,7 +6,7 @@
 		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 		        <span class="sr-only">Toggle navigation</span>
 		      </button>
-		      <a class="navbar-brand" href="#">Dojo eCommerce</a>
+		      <a class="navbar-brand" href="/listproducts">Dojo eCommerce</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -16,7 +16,7 @@
 		        <li><a href="#">Products</a></li>
 		      </ul> -->
 		      <ul class="nav navbar-nav navbar-right">
-		            <li><a href="#">Shopping Cart (4)</a></li>
+		            <li><a href="#">Shopping Cart <?= $this->session->userdata('cart');  ?></a></li>
 		          </ul>
 		    </div><!-- /.navbar-collapse -->
 		<!--   </div>/.container-fluid -->

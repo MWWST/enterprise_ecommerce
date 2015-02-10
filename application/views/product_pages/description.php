@@ -1,4 +1,4 @@
-
+ 
 
 
 <html>
@@ -18,6 +18,8 @@
 */
 	.main-img {
 		text-align: center;
+		width: 330px;
+		max-height: 250px;
 	}
 
 	.box-img {
@@ -51,30 +53,58 @@
 		margin: 8px;
 		display: inline-block;
 	}
-
-
-
 	</style>
-<body>
 
+
+	<script type="text/javascript">
+	//when image is hoovered change .img-main src to the one that is being hoovered over
+
+	$(document).ready(function() {
+		$('.sm-square').hover(function() {
+			var hoverImg = $(this).attr('src');
+
+			console.log($(this).attr('src'));
+			$('.main-img').attr('src',hoverImg);
+
+		},function() {
+			console.log($('.main-img').attr('data-alt-src'));
+			var alt = $('.main-img').attr('data-alt-src');
+			$('.main-img').attr('src', alt);
+		});
+	})
+
+
+
+
+	</script>
+<body>
+<?php //var_dump($product) ?>
 	<div class='container'>
 	<?php $this->load->view('product_pages/partials/products_header'); ?>
 		<div class='row'>
 			<div class='col-sm-12 borders'>
 				<div class='top-text'>
-					<a href=''>Go Back</a>
-					<h2>Black Belt for Staff</h2>
+
+					<a href="<?= '/listproducts/index' ?>">Go Back</a>
+					<h2> <?= $product['name'];  ?></h2>
 				</div>
 			</div>
 		</div>
 		<div class='row'>
 			<div class='col-sm-4 borders'>
-				<div class = 'main-img'>
-					<div class = 'box-img'>
-					</div>
+				<div>
+					<img class='main-img' data-alt-src=<?= "{$product['img_arr'][0]}";?> src=<?= "{$product['img_arr'][0]}";  ?> alt="image">
 				</div>
 				<div class='small-imgs'>
-					<a href='' class = 'sm-square'>
+<?php
+					 for($i=1;$i<count($product['img_arr']); $i++)
+					 {
+?>
+					<img class='sm-square' src= "<?=$product['img_arr'][$i];  ?>" alt='image' >
+<?php
+					 }  
+?>
+<!-- 					<a href='' class = 'sm-square'>
 					</a>
 					<a href='' class = 'sm-square'>
 					</a>
@@ -83,41 +113,35 @@
 					<a href='' class = 'sm-square'>
 					</a>
 					<a href='' class = 'sm-square'>
-					</a>
+					</a> -->
 				</div>
 			</div>
 			<div class='col-sm-8 borders'>
 				<div class='description'>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem 
-					ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>
+<?=
+$product['description'];
+
+  ?>
+
+					</p>
 				</div>
 			</div>
 		</div>
 		<div class='row'>
 			<div class='col-sm-12 borders'> 
 				<div class='price text-right'>
-					<form action='' method='post'>
-
-						<select>
-							<option value='1'>1 ($19.99)</option>
-							<option value='2'>2 ($39.99)</option>
-							<option value='3'>3 ($59.99)</option>
+					<form action='/description/addCart/<?=$product['id']?>' method='post'>
+						<select name='quant'>
+							<option value="<?=$product['qty'][0][0];  ?>">
+								<?= $product['qty'][0][1];  ?>
+							</option>
+							<option value="<?=$product['qty'][1][0];  ?>">
+								<?= $product['qty'][1][1];  ?>
+							</option>
+							<option value="<?=$product['qty'][2][0];  ?>">
+								<?= $product['qty'][2][1];  ?>
+							</option>
 						</select>
 						<input type='submit' value='Buy'>
 					</form>

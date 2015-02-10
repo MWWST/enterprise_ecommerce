@@ -11,7 +11,7 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		// echo "it works";
-		$this->load->view('product_pages/carts');
+		$this->load->view('product_pages/products');
 	}
 }
 

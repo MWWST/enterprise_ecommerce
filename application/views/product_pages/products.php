@@ -102,6 +102,7 @@
 			margin: 5px;
 			display: inline-block;
 			position: relative;
+			max-height: 150px;
 		
 		}
 
@@ -148,9 +149,12 @@
 
 		</style>
 	<body>
+
 		
 		<div class='container'>
 		<?php $this->load->view('product_pages/partials/products_header'); ?>
+		<?php //var_dump($products) ?>
+
 			<div class='row'>	
 				<div class='col-sm-3'>
 					<div class='sidebar'>
@@ -165,11 +169,11 @@
 						</form>
 						<h4>Categories</h4>
 						<ul>
-							<li><a href=''>T-shirts (30)</a></li>
-							<li><a href=''>Shorts (25)</a></li>
-							<li><a href=''>Belts (7)</a></li>
-							<li><a href=''>Socks (12)</a></li>
-							<li><a href=''>Show All</a></li>
+							<li><a href='/listproducts'>T-shirts (30)</a></li>
+							<li><a href='/listproducts'>Shorts (25)</a></li>
+							<li><a href='/listproducts'>Belts (7)</a></li>
+							<li><a href='/listproducts'>Socks (12)</a></li>
+							<li><a href='/listproducts'>Show All</a></li>
 
 						</ul>
 					</div>
@@ -188,13 +192,40 @@
 							</div>
 						</div>
 						<div class='row text-right sorted'>
-							<h4>Sorted By</h4>
-							<select>
-								<option value='price'>Price</option>
-								<option value='popular'>Most Popular</option>
-							</select>
+							<form action='/listproducts/sortedBy' method='post'>
+								<h4>Sorted By</h4>
+								<select name='option'>
+									<option value='price'>Price</option>
+									<option value='popular'>Most Popular</option>
+								</select>
+								<input type='submit' value='update'>
+							</form>
 						</div>
 						<div class='row'>
+<?php 
+foreach ($products as $index) { 
+?>
+						  <div class="col-sm-3">
+						    <a href="/description/index/<?=$index['id']?>" class="thumbnail">
+
+						      <img  class='image' src=<?= $index['img_arr'][0]; ?> alt="image">
+						      <div class="caption">
+						        <p> <?= $index['price'];  ?></p>
+						        <p> <?= $index['name'];  ?></p>
+						      </div>
+						    </a>
+						  </div>
+<?php  
+}
+
+?>
+
+
+				
+
+		
+ 
+
 							<div class='product-box'>
 								<div class='image'>
 										<div class='overlay'>
@@ -211,112 +242,7 @@
 								</div>
 								<a href=''><p text-center>Black Belt</p></a>
 							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-						<div class='row'>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-						<div class='row'>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
-							<div class='product-box'>
-								<div class='image'>
-										<div class='overlay'>
-										<h5>$19.00</h5>
-									</div>
-								</div>
-								<a href=''><p text-center>Black Belt</p></a>
-							</div>
+							
 						<div class='row text-center'>
 							<ul class='bott-nav'>
 								<li><a href=''>1</a></li>
