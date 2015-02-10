@@ -35,9 +35,13 @@
 		 			<th>Action</th>
 		 		</thead>
 		 		<?php  
+
+		 			
 		 			// krsort($all_products);
 		 			// var_dump($all_products);
+		 		// var_dump($all_products);
 		 			foreach ($all_products as $key => $value) 
+		 				// var_dump($relations);
 		 					{ ?>
 					<?="<tr>";
 					if($value['image_link'])
@@ -46,12 +50,15 @@
 					else 
 						{echo "<td><img src='/uploads/default_product.png' width='150px'></td>";
 						}
-		 			echo "<td>".$value['id']."</td>";
-		 			echo"<td>".$value['name']."</td>";
+		 			echo "<td id='id'>".$value['product_id']."</td>";
+		 			echo"<td class='product_names' id='prod_name'>".$value['name']."</td>";
 		 			echo"<td>".$value['inventory_count']."</td>";
 		 			echo"<td>".$value['quant_sold']."</td>";
-		 			echo"<td><a href='/edit/id'>Edit</a> | <a href='/delete/id'>Delete</a></td>
-	 			</tr>";
+		 			echo"<td><button id ='edit'class='btn btn-primary btn-sm edit' data-toggle='modal' data-target='#myModal' 
+		 			data-desc='".$value['description']."'data-productid='".$value['product_id']."'
+		 			data-prodname='".$value['name']."' data-cat='".$value['categories_id']."'
+		 			data-price='".$value['price']."' data-inv='".$value['inventory_count']."'>Edit</button> | <a href='/delete/id'>Delete</a></td>
+	 			</tr>";  	
 
 } ?>
 
@@ -109,7 +116,7 @@
 				        <h4 class="modal-title" id="myModalLabel">Add New Product</h4>
 				      </div>
 				      <div class="modal-body">
-				       <form action="/upload/do_upload" method="post" enctype="multipart/form-data">
+				       <form id="modal_form" action="/upload/do_upload" method="post" enctype="multipart/form-data">
 						  <div class="form-group">
 						    <label for="product_name">Name</label>
 						    <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name">
@@ -120,10 +127,12 @@
 						  </div>
 						   <div class="form-group">
 						    <label for="category">Category</label>
-						    <select class="form-control">
-						    <option>Shirts</option>
-						    <option>Hats</option>
-						    <option>Mugs</option>
+						    <select class="form-control" id="catselect" name="category"><option>Please Select</option>
+						    	<?php foreach ($categories as $key1 => $category_info) {
+		 			 			
+					    echo "<option id='cat' class='category_select' value='".$category_info['id']."'>".$category_info['category']."</option>"; } ?>
+		
+						  <!--   We will add the category id's and titles from db shortly. -->
 						    </select>
 						  </div>
 						  <div class="form-group">
@@ -136,7 +145,7 @@
 						  </div>
 						  <div class="form-group">
 						    <label for="inventory_quantity">Inventory Quantity</label>
-						    <input type="text" class="form-control" id="inventory_quantity" name="inventory_quantity" placeholder="Enter category name">
+						    <input type="text" class="form-control" id="inventory_quantity" name="inventory_quantity" placeholder="Enter quantity">
 						  </div>
 
 						  <div class="form-group">
@@ -144,12 +153,11 @@
 						    <input type="file" name="userfile">
 						    <p class="help-block">Fancy image features with ajax here</p>
 						  </div>	
-						
 				      </div>
 				      <div class="modal-footer">
 				          <button class="btn btn-danger">Cancel</button> 
 						  <button class="btn btn-primary">Preview</button>
-						  <button type="submit" class="btn btn-success">Create</button>
+						  <button type="submit" id="modalbtn" class="btn btn-success">Create</button>
 						  <input type="hidden" name="add_product" value="new_product"</input>
 				        </form>
 				      </div>
@@ -159,7 +167,33 @@
 		 	</div>
 	 	</div>
  	</div>
- 	
+<script>
+$('.edit').click(function () {
+    var productid = $(this).data('productid');
+    var name = $(this).data('prodname');
+    var desc = $(this).data('desc');
+    var category = $(this).data('cat');
+    var price = $(this).data('price');
+    var inventory = $(this).data('inv');
+    $('#myModalLabel').html("Edit This Product");
+    $('#product_name').val(name);
+    $('#product_description').val(desc);
+    $('#catselect').val(category);
+    $('#product_price').val(price);
+    $('#inventory_quantity').attr('value', inventory);
+    $('#modalbtn').html("Edit");
+    $('#modal_form').attr('action','/upload/edit_product')
+    
+
+    console.log(productid);
+    console.log(name);
+    console.log(desc);
+    console.log(price);
+    console.log(inventory);
+    console.log(category);
+
+});
+</script>
 
 </body>
 </html>
