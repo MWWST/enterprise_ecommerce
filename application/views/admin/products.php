@@ -158,7 +158,8 @@
 				          <button class="btn btn-danger">Cancel</button> 
 						  <button class="btn btn-primary">Preview</button>
 						  <button type="submit" id="modalbtn" class="btn btn-success">Create</button>
-						  <input type="hidden" name="add_product" value="new_product"</input>
+						  <input type="hidden" id="productaction" name="product_action" value="new_product"</input>
+				          <input type="hidden" id="modal_productid" class="productid" name="producid"</input>
 				        </form>
 				      </div>
 				    </div>
@@ -182,7 +183,9 @@ $('.edit').click(function () {
     $('#product_price').val(price);
     $('#inventory_quantity').attr('value', inventory);
     $('#modalbtn').html("Edit");
-    $('#modal_form').attr('action','/upload/edit_product')
+    $('#modal_form').attr('action','/upload/edit_product');
+    $('#productaction').val("edit_product");
+    $('#modal_productid').val($(this).data('productid'));
     
 
     console.log(productid);

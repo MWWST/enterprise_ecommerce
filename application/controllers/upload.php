@@ -53,7 +53,52 @@ class Upload extends CI_Controller {
 	}
 
 	function edit_product(){
-		var_dump($this->input->post());
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('add_category','add_category','is_unique[categories.category]');
+			if ($this->form_validation->run() == FALSE)
+			{
+				echo validation_errors();
+			}
+
+			else {
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '100';
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+
+			$this->load->library('upload', $config);
+			$this->upload_config['upload_path'] = realpath(dirname(__FILE__)). '/uploads/';
+			if ($_FILES && $_FILES['userfile']['name'] !== "") {
+
+					if ( ! $this->upload->do_upload()) {
+						$error = array('error' => $this->upload->display_errors());
+						var_dump($error);
+					}
+				}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$this->load->Model('product');
+			
+				$data = array('upload_data' => $this->upload->data());
+				$this->load->Model('product');
+				// $added=$this->product->create($this->input->post(),$data);
+				// redirect('/dashboard/products');
+			}
+				// echo $this->db->insert_id();
+				// var_dump($this->input->post());
+				// $updated=$this->product->update_products($this->input->post());
+				var_dump($updated);
+				var_dump($this->input->post());
+		}
+		// var_dump($this->input->post());
 	}
 }
+
+
+
+
+
+
 ?>
