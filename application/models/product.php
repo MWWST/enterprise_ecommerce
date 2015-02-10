@@ -16,7 +16,7 @@
 		array($last_insert,$cat_last_insert));  
 	}
 
-	elseif ($post['category']) {
+		elseif ($post['category']) {
 		$this->db->query("INSERT INTO products (name, description, price, inventory_count, image_link, created_at) 
 	 	VALUES (?, ?, ?, ?, ?, NOW())", array($post['product_name'],$post['product_description'],
 	 	$post['product_price'], $post['inventory_quantity'],$data['upload_data']['full_path']));
@@ -33,11 +33,13 @@
 	 	$post['product_price'], $post['inventory_quantity'],$data['upload_data']['full_path']));
 		$last_insert=$this->db->insert_id();
 
-
 	}
 
-
 }
+
+	public function get_category_relations() {
+		return $this->db->query("SELECT * FROM categories_have_products");
+	}
 
 	public function retrieve(){
 
@@ -56,7 +58,13 @@
 
 	public function get_products($start_row,$limit){
 
-		return $this->db->query("SELECT * FROM products ORDER BY id DESC limit $start_row, $limit")->result_array();
+		return $this->db->query("SELECT products.id as product_id,products.name,products.description,products.price,products.inventory_count,products.quant_sold,products.image_link,
+			categories_have_products.products_id,categories_have_products.categories_id 
+		FROM products
+		LEFT JOIN categories_have_products ON products.id  = categories_have_products.products_id
+		 ORDER BY products.id DESC limit $start_row, $limit")->result_array();
 	}
+
+
 }
 ?>

@@ -39,7 +39,9 @@
 		 			
 		 			// krsort($all_products);
 		 			// var_dump($all_products);
+		 		// var_dump($all_products);
 		 			foreach ($all_products as $key => $value) 
+		 				// var_dump($relations);
 		 					{ ?>
 					<?="<tr>";
 					if($value['image_link'])
@@ -48,13 +50,13 @@
 					else 
 						{echo "<td><img src='/uploads/default_product.png' width='150px'></td>";
 						}
-		 			echo "<td id='id'>".$value['id']."</td>";
+		 			echo "<td id='id'>".$value['product_id']."</td>";
 		 			echo"<td class='product_names' id='prod_name'>".$value['name']."</td>";
 		 			echo"<td>".$value['inventory_count']."</td>";
 		 			echo"<td>".$value['quant_sold']."</td>";
 		 			echo"<td><button id ='edit'class='btn btn-primary btn-sm edit' data-toggle='modal' data-target='#myModal' 
-		 			data-desc='".$value['description']."'data-productid='".$value['id']."'
-		 			data-prodname='".$value['name']."'
+		 			data-desc='".$value['description']."'data-productid='".$value['product_id']."'
+		 			data-prodname='".$value['name']."' data-cat='".$value['categories_id']."'
 		 			data-price='".$value['price']."' data-inv='".$value['inventory_count']."'>Edit</button> | <a href='/delete/id'>Delete</a></td>
 	 			</tr>";  	
 
@@ -125,10 +127,10 @@
 						  </div>
 						   <div class="form-group">
 						    <label for="category">Category</label>
-						    <select class="form-control" name="category"><option>Please Select</option>
+						    <select class="form-control" id="catselect" name="category"><option>Please Select</option>
 						    	<?php foreach ($categories as $key1 => $category_info) {
 		 			 			
-					    echo "<option value='".$category_info['id']."'>".$category_info['category']."</option>"; } ?>
+					    echo "<option id='cat' class='category_select' value='".$category_info['id']."'>".$category_info['category']."</option>"; } ?>
 		
 						  <!--   We will add the category id's and titles from db shortly. -->
 						    </select>
@@ -170,14 +172,15 @@ $('.edit').click(function () {
     var productid = $(this).data('productid');
     var name = $(this).data('prodname');
     var desc = $(this).data('desc');
-    var category = $(this).data('desc');
+    var category = $(this).data('cat');
     var price = $(this).data('price');
     var inventory = $(this).data('inv');
     $('#myModalLabel').html("Edit This Product");
     $('#product_name').val(name);
     $('#product_description').val(desc);
+    $('#catselect').val(category);
     $('#product_price').val(price);
-    $('#inventory_quantity').val(inventory);
+    $('#inventory_quantity').attr('value', inventory);
     $('#modalbtn').html("Edit");
     $('#modal_form').attr('action','/upload/edit_product')
     
@@ -187,6 +190,8 @@ $('.edit').click(function () {
     console.log(desc);
     console.log(price);
     console.log(inventory);
+    console.log(category);
+
 });
 </script>
 

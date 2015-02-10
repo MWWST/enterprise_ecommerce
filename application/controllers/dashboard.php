@@ -61,6 +61,7 @@ class Dashboard extends CI_Controller {
 
 				$all_products=$this->product->retrieve();
 				$categories=$this->product->retreive_categories();
+				$relations=$this->product->get_category_relations();
 				// echo $last_added;
 				$total_rows= count($all_products);
 				$this->load->library('pagination');
@@ -68,6 +69,7 @@ class Dashboard extends CI_Controller {
 				$config['total_rows'] = $total_rows;
 				$config['per_page'] = 4; 		
 				$this->pagination->initialize($config); 
+				
 				$this->view_data['categories'] = $categories;
 				$this->view_data['pagination'] = $this->pagination->create_links();
 				$this->view_data['all_products']=$this->product->get_products($start_row,$per_page);
