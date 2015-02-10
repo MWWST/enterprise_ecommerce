@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+//Controller for the list of descriptions
 class Description extends CI_Controller {
 
 	public function __construct()
@@ -7,54 +7,25 @@ class Description extends CI_Controller {
 		parent::__construct();
 		$this->output->enable_profiler();
 		$this->load->model('items');
-	}
 
-	//view of all the products
-	public function index()
-	{
-
-		$list = $this->items->get_all();
-
-		foreach ($list as &$index) {
-
-			//creates an array split on ,
-			$img_arr = $this->image_split($index['image_link']);
-			$index['img_arr'] = $img_arr;
+		if($this->session->userdata('cart'))
+		{
+			$this->session->userdata('cart');
+		}
+		else 
+		{
+			$this->session->set_userdata('cart',0);
 		}
 
-		$products = array('products' => $list);
-		// var_dump($products);
-		// die();
-
-		$this->load->view('product_pages/products', $products);
 	}
 
-	private function image_split($str) {
-		return explode(",", $str);
-		//string 
-
-	}
-
-
-
-	//formats the buy button
-	private function quant($num, $price) {
-		return array(
-			$num,
-			"($num) " .'$'.number_format((float)$price * $num, 2,'.','')
-			);
-	}
-
-
-
-
-	//view of specific item
-	public function description_page($id) {
+		//view of specific item
+	public function index($id) {
 
 		//get the product info based on id
 		$item = $this->items->by_id($id);
 		$img_arr = explode(",", $item['image_link']);
-		var_dump($img_arr);
+		// var_dump($img_arr);
 		$item['img_arr'] = $img_arr;
 		// var_dump($item);
 		// die();
@@ -75,53 +46,28 @@ class Description extends CI_Controller {
 
 	}
 
-	public function test($id) {
-		var_dump($id);
-		var_dump($this->input->post() );
-		//add to the cart!
 
+	//formats the buy button
+	private function quant($num, $price) {
+		return array(
+			$num,
+			"($num) " .'$'.number_format((float)$price * $num, 2,'.','')
+			);
 	}
 
-	public function sortedby() {
-		// echo 'hello';
-		// var_dump($this->input->post());
+
+
+	public function addCart($id) {
+		// var_dump($id);
+		$quant = $this->input->post('quant');
+
+		$count = $this->session->userdata('cart');
+		$this->session->set_userdata('cart',$count + $quant );
+
+		$this->load->view("product_pages/description");
 
 
 
-		if ($this->input->post('option') == 'price')
-		{
-			// echo 'sort by price';
-			$list = $this->items->price();
-
-			foreach ($list as &$index) {
-
-				//creates an array split on ,
-				$img_arr = $this->image_split($index['image_link']);
-				$index['img_arr'] = $img_arr;
-			}
-
-			$products = array('products' => $list);
-			// $price = array('products' =>$list);
-			$this->load->view('product_pages/products', $products);
-
-		}
-		else
-		{
-			$list = $this->items->popular();
-
-			foreach ($list as &$index) {
-
-				//creates an array split on ,
-				$img_arr = $this->image_split($index['image_link']);
-				$index['img_arr'] = $img_arr;
-			}
-
-			$products = array('products' => $list);
-			// $popular = array('products' =>$list);
-			$this->load->view('product_pages/products', $products);
-
-		}
-		// echo 'hello get_products function';
 
 	}
 }

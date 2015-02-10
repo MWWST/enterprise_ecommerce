@@ -153,7 +153,7 @@
 		
 		<div class='container'>
 		<?php $this->load->view('product_pages/partials/products_header'); ?>
-		<?php var_dump($products) ?>
+		<?php //var_dump($products) ?>
 
 			<div class='row'>	
 				<div class='col-sm-3'>
@@ -169,11 +169,11 @@
 						</form>
 						<h4>Categories</h4>
 						<ul>
-							<li><a href='/description'>T-shirts (30)</a></li>
-							<li><a href='/description'>Shorts (25)</a></li>
-							<li><a href='/description'>Belts (7)</a></li>
-							<li><a href='/description'>Socks (12)</a></li>
-							<li><a href='/description'>Show All</a></li>
+							<li><a href='/listproducts'>T-shirts (30)</a></li>
+							<li><a href='/listproducts'>Shorts (25)</a></li>
+							<li><a href='/listproducts'>Belts (7)</a></li>
+							<li><a href='/listproducts'>Socks (12)</a></li>
+							<li><a href='/listproducts'>Show All</a></li>
 
 						</ul>
 					</div>
@@ -192,7 +192,7 @@
 							</div>
 						</div>
 						<div class='row text-right sorted'>
-							<form action='/description/sortedBy' method='post'>
+							<form action='/listproducts/sortedBy' method='post'>
 								<h4>Sorted By</h4>
 								<select name='option'>
 									<option value='price'>Price</option>
@@ -206,7 +206,7 @@
 foreach ($products as $index) { 
 ?>
 						  <div class="col-sm-3">
-						    <a href="/description/description_page/<?=$index['id']?>" class="thumbnail">
+						    <a href="/description/index/<?=$index['id']?>" class="thumbnail">
 
 						      <img  class='image' src=<?= $index['img_arr'][0]; ?> alt="image">
 						      <div class="caption">

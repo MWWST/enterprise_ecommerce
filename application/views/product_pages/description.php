@@ -78,14 +78,14 @@
 
 	</script>
 <body>
-<?php var_dump($product) ?>
+<?php //var_dump($product) ?>
 	<div class='container'>
 	<?php $this->load->view('product_pages/partials/products_header'); ?>
 		<div class='row'>
 			<div class='col-sm-12 borders'>
 				<div class='top-text'>
 
-					<a href="<?= '/description/index' ?>">Go Back</a>
+					<a href="<?= '/listproducts/index' ?>">Go Back</a>
 					<h2> <?= $product['name'];  ?></h2>
 				</div>
 			</div>
@@ -131,7 +131,7 @@ $product['description'];
 		<div class='row'>
 			<div class='col-sm-12 borders'> 
 				<div class='price text-right'>
-					<form action='/description/test/<?=$product['id']?>' method='post'>
+					<form action='/description/addCart/<?=$product['id']?>' method='post'>
 						<select name='quant'>
 							<option value="<?=$product['qty'][0][0];  ?>">
 								<?= $product['qty'][0][1];  ?>
