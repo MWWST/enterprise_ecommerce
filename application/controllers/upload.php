@@ -51,5 +51,9 @@ class Upload extends CI_Controller {
 			}
 		}
 	}
+
+	function edit_product(){
+		var_dump($this->input->post());
+	}
 }
 ?>

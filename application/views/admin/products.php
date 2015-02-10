@@ -52,7 +52,10 @@
 		 			echo"<td class='product_names' id='prod_name'>".$value['name']."</td>";
 		 			echo"<td>".$value['inventory_count']."</td>";
 		 			echo"<td>".$value['quant_sold']."</td>";
-		 			echo"<td><button id ='edit'class='btn btn-primary btn-sm edit' data-toggle='modal' data-target='#myModal' data-id='".$value['name']."'>Edit</button> | <a href='/delete/id'>Delete</a></td>
+		 			echo"<td><button id ='edit'class='btn btn-primary btn-sm edit' data-toggle='modal' data-target='#myModal' 
+		 			data-desc='".$value['description']."'data-productid='".$value['id']."'
+		 			data-prodname='".$value['name']."'
+		 			data-price='".$value['price']."' data-inv='".$value['inventory_count']."'>Edit</button> | <a href='/delete/id'>Delete</a></td>
 	 			</tr>";  	
 
 } ?>
@@ -111,7 +114,7 @@
 				        <h4 class="modal-title" id="myModalLabel">Add New Product</h4>
 				      </div>
 				      <div class="modal-body">
-				       <form action="/upload/do_upload" method="post" enctype="multipart/form-data">
+				       <form id="modal_form" action="/upload/do_upload" method="post" enctype="multipart/form-data">
 						  <div class="form-group">
 						    <label for="product_name">Name</label>
 						    <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name">
@@ -140,7 +143,7 @@
 						  </div>
 						  <div class="form-group">
 						    <label for="inventory_quantity">Inventory Quantity</label>
-						    <input type="text" class="form-control" id="inventory_quantity" name="inventory_quantity" placeholder="Enter category name">
+						    <input type="text" class="form-control" id="inventory_quantity" name="inventory_quantity" placeholder="Enter quantity">
 						  </div>
 
 						  <div class="form-group">
@@ -148,12 +151,11 @@
 						    <input type="file" name="userfile">
 						    <p class="help-block">Fancy image features with ajax here</p>
 						  </div>	
-						
 				      </div>
 				      <div class="modal-footer">
 				          <button class="btn btn-danger">Cancel</button> 
 						  <button class="btn btn-primary">Preview</button>
-						  <button type="submit" class="btn btn-success">Create</button>
+						  <button type="submit" id="modalbtn" class="btn btn-success">Create</button>
 						  <input type="hidden" name="add_product" value="new_product"</input>
 				        </form>
 				      </div>
@@ -165,8 +167,26 @@
  	</div>
 <script>
 $('.edit').click(function () {
-    var data = $(this).data('id');
-    console.log(data);
+    var productid = $(this).data('productid');
+    var name = $(this).data('prodname');
+    var desc = $(this).data('desc');
+    var category = $(this).data('desc');
+    var price = $(this).data('price');
+    var inventory = $(this).data('inv');
+    $('#myModalLabel').html("Edit This Product");
+    $('#product_name').val(name);
+    $('#product_description').val(desc);
+    $('#product_price').val(price);
+    $('#inventory_quantity').val(inventory);
+    $('#modalbtn').html("Edit");
+    $('#modal_form').attr('action','/upload/edit_product')
+    
+
+    console.log(productid);
+    console.log(name);
+    console.log(desc);
+    console.log(price);
+    console.log(inventory);
 });
 </script>
 
