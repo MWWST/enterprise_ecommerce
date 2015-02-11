@@ -16,12 +16,15 @@ class Listproducts extends CI_Controller {
 		{
 			$this->session->set_userdata('cart',0);
 		}
-
+		
 	}
 
 	//view of all the products
 	public function index()
 	{
+		// $this->session->sess_destroy();
+		// die();
+		
 
 		$list = $this->items->get_all();
 		foreach ($list as &$index) {
@@ -33,7 +36,8 @@ class Listproducts extends CI_Controller {
 
 		$products = array('products' => $list);
 
-
+		// $this->session->sess_destroy();
+		// die();
 		$this->load->view('product_pages/products', $products);
 	}
 	
@@ -70,13 +74,9 @@ class Listproducts extends CI_Controller {
 				$img_arr = $this->image_split($index['image_link']);
 				$index['img_arr'] = $img_arr;
 			}
-
 			$products = array('products' => $list);
 			// $popular = array('products' =>$list);
 			$this->load->view('product_pages/products', $products);
-
 		}
-
 	}
-
 }

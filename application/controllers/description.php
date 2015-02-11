@@ -57,17 +57,36 @@ class Description extends CI_Controller {
 
 
 	public function addCart($id) {
-		// var_dump($id);
+		//update the cart number for the navbar
 		$quant = $this->input->post('quant');
-
 		$count = $this->session->userdata('cart');
-		$this->session->set_userdata('cart',$count + $quant );
+		$this->session->set_userdata('cart', $count + $quant );
+	
+		//check if userdata('order') exists
+		if($this->session->userdata('order'))
+		{
+			// echo 'order exists';
+			//product is ONE array with multiple key value pairs
+			$products = $this->session->userdata('order');
+			if (array_key_exists("$id", $products))
+			{
+				$products[$id] += $quant;
+			}
+			else
+			{
+				$products[$id] = $quant;
 
-		//session for the product and the quanity
-		
-
-		$this->index($id);
-
+			}
+			$this->session->set_userdata('order', $products);
+		}
+		else
+		{
+			$addcart = array("$id" => $quant);
+			$this->session->set_userdata('order', $addcart);
+			// echo 'check session(order)';
+		}
+		// redirect("admin");
+		redirect("description/index/{$id}");
 	}
 }
 
