@@ -1,11 +1,16 @@
 
 		<div class="col-sm-4">
+			<form action="/dashboard/search_products" method="post">
 		 <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
+        <button type="submit" class="btn btn-default" type="button">Go!</button>
       </span>
-      <input type="text" class="form-control" placeholder="Search for...">
+      <input type="text" class="form-control" name="search" id="search" placeholder="Search for...">
+      <input type="hidden" value="search">
+
     </div><!-- /input-group -->
+		</form>
+		<a href="/dashboard/products">Clear filter</a>
 		</div>
 		<div class="col-sm-4 col-sm-offset-4 text-right">
 			<button class="btn btn-success" data-toggle="modal" data-target="#myModal">Add New Product</button>
@@ -41,7 +46,7 @@
 		 			// var_dump($all_products);
 		 		// var_dump($all_products);
 		 			foreach ($all_products as $key => $value) 
-		 				// var_dump($relations);
+		 				// var_dump($value);
 		 					{ ?>
 					<?="<tr>";
 					if($value['image_link'])

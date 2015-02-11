@@ -53,16 +53,27 @@
 			return $this->db->query("SELECT * FROM categories")->result_array();
 		}
 
+		public function search_product($search,$start_row,$limit){
+
+			return $this->db->query("SELECT products.id as product_id,products.name,products.description,products.price,products.inventory_count,products.quant_sold,products.image_link,
+				categories_have_products.products_id,categories_have_products.categories_id 
+				FROM products 
+				LEFT JOIN categories_have_products ON products.id  = categories_have_products.products_id
+				WHERE products.name LIKE '%".$this->db->escape_like_str($search)."%' 
+				ORDER BY products.id DESC LIMIT $start_row,$limit")->result_array();
+
+		}
 
 
 
 		public function get_products($start_row,$limit){
 
-			return $this->db->query("SELECT products.id as product_id,products.name,products.description,products.price,products.inventory_count,products.quant_sold,products.image_link,
+			return $this->db->query("SELECT products.id as product_id,products.name,products.description,products.price
+				,products.inventory_count,products.quant_sold,products.image_link,
 				categories_have_products.products_id,categories_have_products.categories_id 
 			FROM products
-			LEFT JOIN categories_have_products ON products.id  = categories_have_products.products_id
-			 ORDER BY products.id DESC limit $start_row, $limit")->result_array();
+			LEFT JOIN categories_have_products ON products.id = categories_have_products.products_id
+			ORDER BY products.id DESC limit $start_row, $limit")->result_array();
 		}
 
 		public function update_products($post){
