@@ -72,13 +72,9 @@ class Listproducts extends CI_Controller {
 				$img_arr = $this->image_split($index['image_link']);
 				$index['img_arr'] = $img_arr;
 			}
-
 			$products = array('products' => $list);
 			// $popular = array('products' =>$list);
 			$this->load->view('product_pages/products', $products);
-
 		}
-
 	}
-
 }

@@ -72,15 +72,12 @@
 			display: inline;
 			
 			border-left: solid gray 1px;
-		
 		}
 
 		.top-nav li a {
 			margin: 0px 15px 0px 15px;
 
 		}
-
-
 
 		.sorted h4 {
 			display: inline-block;
@@ -149,12 +146,8 @@
 
 		</style>
 	<body>
-
-		<?php //var_dump($this->session->userdata('cart')); ?>
 		<div class='container'>
 		<?php $this->load->view('product_pages/partials/products_header'); ?>
-		<?php //var_dump($products) ?>
-
 			<div class='row'>	
 				<div class='col-sm-3'>
 					<div class='sidebar'>
@@ -174,7 +167,6 @@
 							<li><a href='/listproducts'>Belts (7)</a></li>
 							<li><a href='/listproducts'>Socks (12)</a></li>
 							<li><a href='/listproducts'>Show All</a></li>
-
 						</ul>
 					</div>
 				</div>
@@ -217,15 +209,7 @@ foreach ($products as $index) {
 						  </div>
 <?php  
 }
-
 ?>
-
-
-				
-
-		
- 
-
 							<div class='product-box'>
 								<div class='image'>
 										<div class='overlay'>

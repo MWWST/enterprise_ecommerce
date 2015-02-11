@@ -57,17 +57,11 @@ class Description extends CI_Controller {
 
 
 	public function addCart($id) {
-		//$id is string
-		// $this->session->sess_destroy();
-		// die();
-
 		//update the cart number for the navbar
 		$quant = $this->input->post('quant');
 		$count = $this->session->userdata('cart');
 		$this->session->set_userdata('cart', $count + $quant );
-
-
-		
+	
 		//check if userdata('order') exists
 		if($this->session->userdata('order'))
 		{
@@ -76,12 +70,10 @@ class Description extends CI_Controller {
 			$products = $this->session->userdata('order');
 			if (array_key_exists("$id", $products))
 			{
-				// echo 'this key exists';
 				$products[$id] += $quant;
 			}
 			else
 			{
-				// echo 'this is a new key';
 				$products[$id] = $quant;
 
 			}
@@ -92,12 +84,10 @@ class Description extends CI_Controller {
 			$addcart = array("$id" => $quant);
 			$this->session->set_userdata('order', $addcart);
 			// echo 'check session(order)';
-
 		}
 		// redirect("admin");
 		redirect("description/index/{$id}");
 	}
-	
 }
 
 //end of main controller

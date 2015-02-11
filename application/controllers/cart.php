@@ -13,7 +13,7 @@ class Cart extends CI_Controller {
 	public function index() {
 		//need the products by item
 		//mySQL query with a list of items
-		var_dump($this->session->userdata('order'));
+		// var_dump($this->session->userdata('order'));
 		$orders = $this->session->userdata('order');
 
 		$ids = array();
@@ -48,5 +48,78 @@ class Cart extends CI_Controller {
 		//go back to view
 		redirect('cart/index');
 	}
+
+	public function pay() {
+
+		// var_dump($this->input->post());
+		$this->load->library("form_validation");
+
+		$this->form_validation->set_rules("ship-first", "Shipping First Name", "required|min_length[2]|alpha");
+		$this->form_validation->set_rules("ship-last", "Shipping Last Name", "required|min_length[2]|alpha");
+		$this->form_validation->set_rules("ship-address1", "Shipping Address", "required");
+		$this->form_validation->set_rules("ship-city", "Shipping City", "required|min_length[2]");
+		$this->form_validation->set_rules("ship-state", "Shipping State", "required|min_length[2]");
+		$this->form_validation->set_rules("ship-zip", "Shipping Zipcode", "required|min_length[5]|numeric");
+
+		if($this->input->post('shipping-same')) {
+			$this->form_validation->set_rules("bill-first", "Shipping First Name", "required|min_length[2]|alpha");
+			$this->form_validation->set_rules("bill-last", "Shipping Last Name", "required|min_length[2]|alpha");
+			$this->form_validation->set_rules("bill-address1", "Shipping Address", "required");
+			$this->form_validation->set_rules("bill-city", "Shipping City", "required|min_length[2]");
+			$this->form_validation->set_rules("bill-state", "Shipping State", "required|min_length[2]");
+			$this->form_validation->set_rules("bill-zip", "Shipping Zipcode", "required|min_length[5]|numeric");
+				
+		}
+
+			$this->form_validation->set_rules("card-num", "Card Number", "required|min_length[16]|numeric");
+			$this->form_validation->set_rules("sec-code", "Security Code", "required|min_length[3]|numeric");
+			$this->form_validation->set_rules("card-month", "Expiration Month", "required|min_length[2]|numeric");
+			$this->form_validation->set_rules("card-year", "Expiration Year", "required|min_length[2]|numeric");
+
+	
+
+		if($this->form_validation->run() === FALSE)
+		{
+
+			$errors = $this->view_data['errors'] = validation_errors();
+			// $this->session->userdata('errors') = $errors;
+			$this->session->set_userdata(array('errors' => $errors));
+			// var_dump($this->session->userdata('errors'));
+			// die();
+
+		}
+		else
+		{
+			//valid data
+			$data = $this->input->post();
+			date_default_timezone_set('America/Los_Angeles');
+			$date = date('Y-m-d h:i:s');
+
+			var_dump($data);
+
+			// $userArray = array(
+			// 	"first" => $data['first'],
+			// 	"last" => $data['last'],
+			// 	"email" => $data['email'],
+			// 	"password" => md5($data['password']),
+			// 	"created_at" => $date,
+			// 	"updated_at" => $date
+			// 	);
+
+			// $addUser = $this->login->newUser($userArray);
+			// $success_string = "<p class='green'>Hello {$data['first']}. Registration successful. Please login!</p>";
+			// $this->session->set_userdata(array('reg_success' => $success_string));
+
+		}
+		
+		redirect('cart/index');
+
+
+
+
+
+	}
+
+
 
 }
