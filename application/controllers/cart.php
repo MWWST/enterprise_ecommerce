@@ -11,20 +11,25 @@ class Cart extends CI_Controller {
 	}
 
 	public function index() {
-		//need the products by item
-		//mySQL query with a list of items
-		// var_dump($this->session->userdata('order'));
-		$orders = $this->session->userdata('order');
 
-		$ids = array();
-		foreach ($orders as $key => $value) {
-			$ids[] = $key;
+		//if cart is 0 or userdata('order') is false 
+		if (!$this->session->userdata('order'))
+		{
+			$products = array('products'=>array());
+
+			// $this->session->set_userdata('order', array());
 		}
-
-		$idStr = implode(',',$ids);
-		$list = $this->items->cart_items($idStr);
-		$products = array('products' => $list);
-
+		else
+		{
+			$orders = $this->session->userdata('order');
+			$ids = array();
+			foreach ($orders as $key => $value) {
+				$ids[] = $key;
+				$idStr = implode(',',$ids);
+				$list = $this->items->cart_items($idStr);
+				$products = array('products' => $list);
+			}
+		}
 		$this->load->view('/product_pages/carts',$products);
 	}
 
@@ -50,6 +55,20 @@ class Cart extends CI_Controller {
 	}
 
 	public function pay() {
+		require_once(APPPATH.'/config/stripeconfig.php');
+
+			$token  = $_POST['stripeToken'];
+			var_dump($token);
+
+	  		$customer = Stripe_Customer::create(array(
+	      	'email' => 'customer@example.com',
+	      	'card'  => $token
+	  		));
+
+	  		var_dump($customer);
+	  		var_dump($this->input->post());
+
+	  		die();
 
 		// var_dump($this->input->post());
 		$this->load->library("form_validation");

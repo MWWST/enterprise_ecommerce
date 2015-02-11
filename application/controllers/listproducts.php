@@ -22,6 +22,8 @@ class Listproducts extends CI_Controller {
 	//view of all the products
 	public function index()
 	{
+		// $this->session->sess_destroy();
+		// die();
 		
 
 		$list = $this->items->get_all();
