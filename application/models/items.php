@@ -21,5 +21,13 @@
 	public function popular() {
 		return $this->db->query("SELECT * FROM products ORDER BY quant_sold DESC")->result_array();
 	}
+
+	//gets all products in the cart by ids
+	public function cart_items($idStr) {
+
+		$query = "SELECT * FROM products WHERE id in ($idStr);";
+
+		return $this->db->query($query)->result_array();
+	}
 }
 ?>

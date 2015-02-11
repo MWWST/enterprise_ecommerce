@@ -16,7 +16,7 @@
 		        <li><a href="#">Products</a></li>
 		      </ul> -->
 		      <ul class="nav navbar-nav navbar-right">
-		            <li><a href="#">Shopping Cart <?= $this->session->userdata('cart');  ?></a></li>
+		            <li><a href="/cart">Shopping Cart <?= $this->session->userdata('cart');  ?> </a></li>
 		          </ul>
 		    </div><!-- /.navbar-collapse -->
 		<!--   </div>/.container-fluid -->

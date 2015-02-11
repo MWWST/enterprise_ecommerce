@@ -16,12 +16,13 @@ class Listproducts extends CI_Controller {
 		{
 			$this->session->set_userdata('cart',0);
 		}
-
+		
 	}
 
 	//view of all the products
 	public function index()
 	{
+		
 
 		$list = $this->items->get_all();
 		foreach ($list as &$index) {
@@ -33,7 +34,8 @@ class Listproducts extends CI_Controller {
 
 		$products = array('products' => $list);
 
-
+		// $this->session->sess_destroy();
+		// die();
 		$this->load->view('product_pages/products', $products);
 	}
 	

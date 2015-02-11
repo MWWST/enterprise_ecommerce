@@ -1,4 +1,7 @@
+<?php 
+// var_dump($products);
 
+ ?>
 <html>
 <head>
 	<title>Shopping Cart</title>
@@ -13,6 +16,10 @@
 		}
 
 		.slash {
+			display: inline-block;
+		}
+
+		.trash {
 			display: inline-block;
 		}
 	</style>
@@ -30,13 +37,28 @@
 		 			<th>Quantity</th>
 		 			<th>Total</th>
 		 		</thead>
+<?php 
+foreach ($products as $index) {
+?>
 		 		<tr>
-		 			<td>Cup</td>
-		 			<td>9.99</td>
-		 			<td>5</td>
-		 			<td>$50.00</td>
+		 			<td> <?= $index['name'];  ?></td>
+		 			<td> $<?= $index['price'];  ?></td>
+		 			<td> <?=  $this->session->userdata['order'][$index['id']];  ?> 
+		 				<form class='trash' action='/cart/trash' method='post'>
+			 				<button type="submit" class="btn btn-default" >
+	  							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</button>
+							<input type='hidden' name='quant' value='<?= $this->session->userdata['order'][$index['id']]?>' />
+							<input type='hidden' name='id' value='<?= $index['id'] ?>' />
+						</form>
+					</td>
+		 			<td> <?= $index['price'] * $this->session->userdata['order'][$index['id']];  ?></td>
 	 			</tr>
-	 			<tr>
+<?php 
+}
+
+ ?>
+<!-- 	 			<tr>
 		 			<td>TV</td>
 		 			<td>449.99</td>
 		 			<td>1</td>
@@ -47,7 +69,7 @@
 		 			<td>449.99</td>
 		 			<td>1</td>
 		 			<td>$1200.99</td>
-		 		</tr>
+		 		</tr> -->
 			</table>
 		</div>
 		<div class='col-sm-8'>

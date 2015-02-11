@@ -150,7 +150,7 @@
 		</style>
 	<body>
 
-		
+		<?php //var_dump($this->session->userdata('cart')); ?>
 		<div class='container'>
 		<?php $this->load->view('product_pages/partials/products_header'); ?>
 		<?php //var_dump($products) ?>
