@@ -26,6 +26,7 @@
 			</div> -->
 		</div>
 		 <div class="col-sm-12 col-md-12 col-md-offset-0">
+		 	<?php var_dump($all_orders); ?>
 		 	<table class="table table-striped">
 		 		<thead>
 		 			<th>Order ID</th>
@@ -35,73 +36,23 @@
 		 			<th>Total</th>
 		 			<th>Status</th>
 		 		</thead>
-		 		<tr>
-		 			<td><a href="/orders/show/id">100</a></td>
-		 			<td>Bob</td>
-		 			<td>1/6/2015</td>
-		 			<td>1982 Zanker Rod, San Jose CA 97112</td>
-		 			<td>149.99</td>
+		 		<?php foreach ($all_orders as $key => $order) {		 		
+		 		echo "<tr><td><a href='".$order['order_id']."'>100</a></td>
+		 			<td>".$order['shipping_first_name']."</td>
+		 			<td>".$order['created_at']."</td>
+		 			<td>".$order['shipping_street1']." ".$order['shipping_street2']." "
+		 			.$order['shipping_city']." ".$order['shipping_state']." "
+		 			.$order['shipping_zip']."</td>
+		 			<td>".$order['grand_total']."</td>
 		 			<td>
 		 				<select>
-			 				<option>Shipped</option>
-			 				<option>Order in Progress</option>
-			 				<option>Cancelled</option>
+			 				<option value=''>Shipped</option>
+			 				<option value=''>Order in Progress</option>
+			 				<option value=''>Cancelled</option>
 		 				</select>
 		 			</td>
-	 			</tr>
-	 			<tr>
-		 			<td><a href="">99</a></td>
-		 			<td>Stacey</td>
-		 			<td>1/5/2015</td>
-		 			<td>555 Stevens Creek, San Jose CA 97112</td>
-		 			<td>1049.99</td>
-		 			<td>
-		 				<select>
-			 				<option>Shipped</option>
-			 				<option>Order in Progress</option>
-			 				<option>Cancelled</option>
-		 				</select>
-		 			</td>
-	 			</tr><tr>
-		 			<td><a href="">98</a></td>
-		 			<td>Rhonda</td>
-		 			<td>1/1/2015</td>
-		 			<td>6074 Dover Lane, Grand Rapids, MI</td>
-		 			<td>99.99</td>
-		 			<td>
-		 				<select>
-			 				<option>Shipped</option>
-			 				<option>Order in Progress</option>
-			 				<option>Cancelled</option>
-		 				</select>
-		 			</td>
-	 			</tr><tr>
-		 			<td><a href="">98</a></td>
-		 			<td>Tawanda</td>
-		 			<td>1/1/2015</td>
-		 			<td>4390 Alberata, Naples FL 99988</td>
-		 			<td>79.89</td>
-		 			<td>
-		 				<select>
-			 				<option>Shipped</option>
-			 				<option>Order in Progress</option>
-			 				<option>Cancelled</option>
-		 				</select>
-		 			</td>
-	 			</tr><tr>
-		 			<td><a href="">98</a></td>
-		 			<td>Gerald</td>
-		 			<td>1/1/2015</td>
-		 			<td>PO Box 1245 Tracverse City, MI 49684</td>
-		 			<td>949.99</td>
-		 			<td>
-		 				<select>
-			 				<option>Shipped</option>
-			 				<option>Order in Progress</option>
-			 				<option>Cancelled</option>
-		 				</select>
-		 			</td>
-	 			</tr>
+	 			</tr>";
+	 			}?>
 			</table>
 		 </div>
 		

@@ -8,9 +8,10 @@
 			return $this->db->query("SELECT orders.id as order_id,orders.status,orders.total,orders.shipping_cost,
 			orders.grand_total,orders.shipping_address_id,orders.billing_address_id,
 			orders.shipping_method,orders.created_at,orders.updated_at,orders.billings_id,
-			saddress.id as shipping_address_id,saddress.street1 as shipping_street1,saddress.street2 
+			saddress.id as shipping_address_id,saddress.first_name as shipping_first_name,saddress.last_name as shipping_last_name,saddress.street1 as shipping_street1,saddress.street2 
 			as shipping_street2,saddress.city as shipping_city,saddress.state as shipping_state,
-			saddress.zip as shipping_zip,baddress.id as billing_address_id,
+			saddress.zip as shipping_zip,baddress.id as billing_address_id,baddress.first_name as billing_first_name,
+			baddress.last_name as billing_lastname,
 			baddress.street1 as billing_street1,baddress.street2 as billing_street2,
 			baddress.city as billing_city,baddress.state as billing_state,baddress.zip as billing_zip
 			FROM orders
