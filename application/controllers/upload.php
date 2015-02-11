@@ -72,7 +72,7 @@ class Upload extends CI_Controller {
 				$this->upload_config['upload_path'] = realpath(dirname(__FILE__)). '/uploads/';
 						if (! $this->upload->do_upload()) {
 							$error = array('error' => $this->upload->display_errors());
-							var_dump($error);
+							// var_dump($error);
 						}
 						else
 						{

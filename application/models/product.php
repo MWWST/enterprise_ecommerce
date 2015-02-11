@@ -102,8 +102,6 @@
 
 		// }
 	
-
-
 		public function update_products_category_and_image($post,$data1){
 		//update products and category when there is an image 
 			$idproduct=$post['producid'];
