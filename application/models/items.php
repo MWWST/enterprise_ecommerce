@@ -5,7 +5,6 @@
 		return $this->db->get_where('products', array('id' => $id) )->row_array();
 
 	}
-	
 
 	//gets all products
 	public function get_all() {
@@ -17,7 +16,6 @@
 		return $this->db->query("SELECT * FROM products ORDER BY price")->result_array();
 
 	}
-
 	public function popular() {
 		return $this->db->query("SELECT * FROM products ORDER BY quant_sold DESC")->result_array();
 	}
