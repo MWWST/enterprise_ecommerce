@@ -11,7 +11,7 @@
 					if ($loginemail == $logged_in['email'] && $logged_in['access_level']==1  && $this->session->userdata('is_logged_in')==TRUE)
 					{
 						$start_row = $this->uri->segment(3);
-						$per_page = 4;
+						$per_page = 10;
 						
 						if(trim($start_row) == ''){
 							$start_row =0;
@@ -21,11 +21,11 @@
 						$all_orders=$this->order->retreive_orders();
 						$total_rows= count($all_orders);
 						$this->load->library('pagination');
-						$config['base_url'] = base_url() . 'dashboard/products';
+						$config['base_url'] = base_url() . 'dashboard/orders';
 						$config['total_rows'] = $total_rows;
-						$config['per_page'] = 4; 		
+						$config['per_page'] = 10; 		
 						$this->pagination->initialize($config); 
-						$this->view_data['pagination'] = $this->pagination->create_links();
+						$this->view_data['pagination_orders'] = $this->pagination->create_links();
 						$this->view_data['all_orders']=$this->order->get_orders($start_row,$per_page);
 						$this->load->view('admin/header');
 						$this->load->view('admin/orders',$this->view_data);

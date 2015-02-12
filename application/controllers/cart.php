@@ -55,6 +55,7 @@ class Cart extends CI_Controller {
 	}
 
 	public function pay() {
+		
 		require_once(APPPATH.'/config/stripeconfig.php');
 
 			$token  = $_POST['stripeToken'];
@@ -65,10 +66,14 @@ class Cart extends CI_Controller {
 	      	'card'  => $token
 	  		));
 
-	  		var_dump($customer);
-	  		var_dump($this->input->post());
-
-	  		die();
+	  		// var_dump($customer);
+	  		// var_dump($this->input->post());
+	  		$this->load->model('order');
+			$ordered=$this->order->create_order($this->input->post(),$token);
+			if ($ordered){
+				echo "yes";
+				echo $shipid;
+			}
 
 		// var_dump($this->input->post());
 		$this->load->library("form_validation");
@@ -115,6 +120,7 @@ class Cart extends CI_Controller {
 			$date = date('Y-m-d h:i:s');
 
 			var_dump($data);
+
 
 			// $userArray = array(
 			// 	"first" => $data['first'],

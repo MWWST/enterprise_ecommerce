@@ -26,7 +26,6 @@
 			</div> -->
 		</div>
 		 <div class="col-sm-12 col-md-12 col-md-offset-0">
-		 	<?php var_dump($all_orders); ?>
 		 	<table class="table table-striped">
 		 		<thead>
 		 			<th>Order ID</th>
@@ -37,7 +36,7 @@
 		 			<th>Status</th>
 		 		</thead>
 		 		<?php foreach ($all_orders as $key => $order) {		 		
-		 		echo "<tr><td><a href='".$order['order_id']."'>100</a></td>
+		 		echo "<tr><td><a href='/orders/show/".$order['order_id']."'>".$order['order_id']."</a></td>
 		 			<td>".$order['shipping_first_name']."</td>
 		 			<td>".$order['created_at']."</td>
 		 			<td>".$order['shipping_street1']." ".$order['shipping_street2']." "
@@ -46,9 +45,7 @@
 		 			<td>".$order['grand_total']."</td>
 		 			<td>
 		 				<select>
-			 				<option value=''>Shipped</option>
-			 				<option value=''>Order in Progress</option>
-			 				<option value=''>Cancelled</option>
+			 				<option value='".$order['status_code']."'>".$order['status_name']."</option>
 		 				</select>
 		 			</td>
 	 			</tr>";
@@ -60,6 +57,7 @@
 			<div class="col-sm-12 col-sm-offset-4">
 			 	<nav>
   <ul class="pagination">
+  	<?php echo $pagination_orders;?>
     <li>
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>

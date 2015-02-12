@@ -3,9 +3,12 @@
 // echo phpversion();
 require_once(APPPATH.'/config/stripeconfig.php');
 
-var_dump($this->session->userdata('order'));
-var_dump(key($this->session->userdata('order')));
-
+// var_dump($this->session->userdata('order'));
+// var_dump(key($this->session->userdata('order')));
+foreach ($this->session->userdata('order') as $key => $value) {
+				var_dump($key);
+				var_dump($value);
+			}
  ?>
 <html>
 <head>

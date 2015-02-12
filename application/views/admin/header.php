@@ -72,8 +72,8 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav link">
-		        <li class="active"><a href="#">Orders<span class="sr-only">(current)</span></a></li>
-		        <li class="link"><a class="link" href="#">Products</a></li>
+		        <li class="link"><a class="link" href="/dashboard/orders/">Orders</a></li>
+		        <li class="link"><a class="link" href="/dashboard/products/">Products</a></li>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
 		            <li class="link"><a href="/admin/logoff/">Logoff</a></li>

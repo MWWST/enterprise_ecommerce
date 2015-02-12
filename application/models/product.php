@@ -35,8 +35,6 @@
 
 		}
 	}
-	
-
 		public function get_category_relations() {
 			return $this->db->query("SELECT * FROM categories_have_products");
 		}
@@ -47,7 +45,6 @@
 			LEFT JOIN categories_have_products ON categories_have_products.products_id = products.id
 			ORDER BY products.id DESC")->result_array();
 		}
-
 
 		public function retreive_categories(){
 			return $this->db->query("SELECT * FROM categories")->result_array();
@@ -63,8 +60,6 @@
 				ORDER BY products.id DESC LIMIT $start_row,$limit")->result_array();
 
 		}
-
-
 
 		public function get_products($start_row,$limit){
 
@@ -151,7 +146,6 @@
 			$this->db->where('products.id',$post['producid']);
 			$this->db->update('products',$updateData);
 
-
 			$updateCategoryData=array('products_id'=>$post['producid'],'categories_id'=>$post['category'],'updated_at'=>now());
 			$this->db->where('categories_have_products.products_id',$post['producid']);
 			$this->db->update('categories_have_products',$updateCategoryData);
@@ -163,13 +157,6 @@
 			$this->db->delete('categories_have_products');
 			$this->db->where('products.id',$id);
 			$this->db->delete('products');
-
-
 		}
-
-
-
 	}
-
-
 ?>

@@ -83,10 +83,13 @@ class Description extends CI_Controller {
 		{
 			$addcart = array("$id" => $quant);
 			$this->session->set_userdata('order', $addcart);
-			// echo 'check session(order)';
+			echo 'check session(order)';
+			// foreach ($this->session->userdata('order') as $key => $value) {
+			// 	var_dump($value);
+			// }
 		}
 		// redirect("admin");
-		redirect("description/index/{$id}");
+		// redirect("description/index/{$id}");
 	}
 }
 
